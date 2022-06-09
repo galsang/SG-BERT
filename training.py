@@ -49,7 +49,7 @@ parser.add_argument('--freeze', default=True, action='store_true')
 parser.add_argument('--clone', default=True, action='store_true')
 parser.add_argument('--disable_tqdm', default=True, action='store_true')
 parser.add_argument('--obj', default='SG-OPT', type=str)
-parser.add_argument('--device', default='cpu', type=str)
+parser.add_argument('--device', default='cuda:0', type=str)
 
 args = parser.parse_args()
 for a in args.__dict__:
@@ -133,10 +133,8 @@ model.fit(train_objectives=[(train_dataloader, train_loss)],
           disable_tqdm=args.disable_tqdm)
 
 logging.info('Training finished.')
-logging.info(f'Elapsed time: {time.time()-start_time}')
-logging.info(train_loss.sample_cnt)
 
-model = SentenceTransformer(model_save_path)
-dev_evaluator(model, output_path=model_save_path)
-score = test_evaluator(model, output_path=model_save_path)
-print(score)
+dev_score = dev_evaluator(model, output_path=model_save_path)
+test_score = test_evaluator(model, output_path=model_save_path)
+print(dev_score)
+print(test_score)
