@@ -1,6 +1,6 @@
 # SG-BERT
 
-This repository contains the implementation of ''Self-Gudied Contrastive Learning for BERT Sentence Representations (ACL 2021)''.
+This repository contains the implementation of **Self-Gudied Contrastive Learning for BERT Sentence Representations (ACL 2021)**.
 (Disclaimer: the code is a little bit cluttered as this is not a cleaned version.)
  
 When using this code for the following work, please cite our paper with the BibTex below.
